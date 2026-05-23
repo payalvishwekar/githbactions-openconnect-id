@@ -3,13 +3,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-  res.send('<h1>Hello from DevOps World 🌍</h1><p>Deployed on AWS EKS with GitHub Actions + ArgoCD</p>');
+  res.send('<h1>Hello from DevOps World 🌍</h1>');
 });
 
 app.get('/health', (req, res) => {
-  res.status(200).send('Healthy');
+  res.status(200).send('OK');
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {   // ← Important: 0.0.0.0
   console.log(`Server running on port ${PORT}`);
 });
