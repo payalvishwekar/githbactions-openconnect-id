@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: hello-devops
-        image: IMAGE_PLACEHOLDER  # Will be updated by GitHub Actions
+        image: 287466334815.dkr.ecr.us-east-1.amazonaws.com/my-node-app:IMAGE_TAG
         ports:
         - containerPort: 3000
         readinessProbe:
