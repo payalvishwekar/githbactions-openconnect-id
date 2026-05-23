@@ -39,7 +39,8 @@ jobs:
           pwd
           ls -ltr
           sed -i "s|IMAGE_TAG|${{ env.IMAGE_TAG }}|g" k8s/deployment.yml 
-          cat k8s/deployment.yml
+          #cat k8s/deployment.yml
+          kubectl get nodes
           kubectl apply -f k8s/deployment.yml --validate=false
           kubectl apply -f k8s/service.yml --validate=false
           echo "deployment completed successfully"
