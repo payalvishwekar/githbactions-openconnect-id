@@ -50,4 +50,5 @@ jobs:
           kubectl get nodes
           kubectl apply -f k8s/deployment.yml --validate=false
           kubectl apply -f k8s/svc.yml --validate=false
+          kubectl get pods
           echo "deployment completed successfully" 
