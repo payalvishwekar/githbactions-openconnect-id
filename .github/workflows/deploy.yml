@@ -44,7 +44,7 @@ jobs:
       - name: deploy to EKS
         run: |
           pwd
-          ls -ltr
+          ls -ltr k8s/
           sed -i "s|IMAGE_TAG|${{ env.IMAGE_TAG }}|g" k8s/deployment.yml 
           #cat k8s/deployment.yml
           kubectl get nodes
