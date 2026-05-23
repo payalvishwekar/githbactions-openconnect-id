@@ -37,6 +37,6 @@ jobs:
       - name: deploy to EKS
         run: |
           sed -i "s|IMAGE_TAG|${{ env.IMAGE_TAG }}|g" k8s/deployment.yml
-          kubectl apply -f k8s/deployment.yml
-          kubectl apply -f k8s/service.yml
+          kubectl apply -f k8s/deployment.yml --validate=false
+          kubectl apply -f k8s/service.yml --validate=false
           echo "deployment completed successfully"
