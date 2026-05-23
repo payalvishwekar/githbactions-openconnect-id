@@ -36,6 +36,7 @@ jobs:
           aws eks update-kubeconfig --name ${{ env.EKS_CLUSTER_NAME }} --region ${{ env.AWS_REGION }}
       - name: deploy to EKS
         run: |
+          pwd
           sed -i "s|IMAGE_TAG|${{ env.IMAGE_TAG }}|g" k8s/deployment.yml
           kubectl apply -f k8s/deployment.yml --validate=false
           kubectl apply -f k8s/service.yml --validate=false
