@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: hello-devops
-        image: 287466334815.dkr.ecr.us-east-1.amazonaws.com/my-node-app:IMAGE_TAG
+        image: 287466334815.dkr.ecr.us-east-1.amazonaws.com/openconnect-id:latest
         ports:
         - containerPort: 3000
         readinessProbe:
