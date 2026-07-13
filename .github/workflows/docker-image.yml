@@ -29,4 +29,5 @@ jobs:
       - name: Deploy
         run: |
           kubectl apply -f k8s/deployment.yml
-          kubectl rollout status deployment/my-app
+          #kubectl rollout status deployment/my-app
+          kubectl apply -f k8s/svc.yml
