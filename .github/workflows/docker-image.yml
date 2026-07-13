@@ -1,0 +1,32 @@
+name: Deploy to EKS
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  id-token: write   # Required for OIDC
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4   
+        with:
+          role-to-assume: arn:aws:iam::287466334815:role/GitActionsEKSRole
+          aws-region: us-east-1
+          # role-session-name: github-actions   # optional
+
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --name my-argo-cluster --region us-east-1
+
+      - name: Deploy
+        run: |
+          kubectl apply -f k8s/deployment.yml
+          kubectl rollout status deployment/my-app
